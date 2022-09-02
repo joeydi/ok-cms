@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: ok-cms
+    name: ok-strapi-web
     env: node
     plan: free
     buildCommand: yarn install && yarn build
@@ -21,7 +21,7 @@ services:
         sync: false
       - key: DATABASE_URL
         fromDatabase:
-          name: strapi
+          name: ok-strapi-db
           property: connectionString
       - key: JWT_SECRET
         generateValue: true
@@ -31,5 +31,5 @@ services:
         generateValue: true
 
 databases:
-  - name: strapi
+  - name: ok-strapi-db
     plan: free
